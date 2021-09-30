@@ -1,8 +1,8 @@
 name: try-golang-autobuild
 on: [push, pull_request]
 jobs:
-  build&test:
-    name: build_test
+  build_test:
+    name: build&test
     runs-on: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - name: Check out code
