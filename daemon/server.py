@@ -16,12 +16,14 @@ webhook = Webhook(app,'/',_sec,"zecreyWebhook.log")
 
 @webhook.hook(event_type='workflow_job')
 def on_workflow_job(data):
-    print("Get: {0}".format(data))
+    # print("Get: {0}".format(data))
+    pass
 
 @webhook.hook()
 def on_all(data):
-    if webhook_handler.get_zecrey_result(data) is not None:
-        logging.info("check success, need pull...")
+    res = webhook_handler.get_zecrey_result(data)
+    if res is not None:
+        print("check success, need pull... ",data["head_commit"]["id"])
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=4567)
