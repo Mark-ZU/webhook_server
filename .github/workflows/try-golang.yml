@@ -36,7 +36,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Result To Webhook
-        needs: 
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_type: 'json-extended'
