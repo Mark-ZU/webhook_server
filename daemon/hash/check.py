@@ -7,7 +7,7 @@ def check(msg,sign):
             _sec = f.read()
     except IOError:
         return False
-    digest = hmac.new(_sec, msg=msg, digestmod=hashlib.sha256).hexdigest()
+    digest = "sha256="+hmac.new(_sec, msg=msg, digestmod=hashlib.sha256).hexdigest()
     return hmac.compare_digest(digest,sign)
 
 
