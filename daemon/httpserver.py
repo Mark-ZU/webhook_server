@@ -15,10 +15,10 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"OK\n")
     def _set_failure(self):
-        self.send_response(200)
+        self.send_response(400)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-        self.wfile.write(b"OK\n")
+        self.wfile.write(b"Bad Request\n")
     def _set_get_res(self):
         self.send_response(500)
         self.send_header('Content-type', 'text/html')

@@ -1,6 +1,8 @@
 import sys
-from github_webhook import Webhook
+import webhook_handler
+from webhook_handler import Webhook
 from flask import Flask
+import logging
 
 try:
     with open("hash/.zecrey.sec","rb") as f:
@@ -10,11 +12,16 @@ except IOError:
     sys.exit(-1)
 
 app = Flask(__name__)
-webhook = Webhook(app,'/',_sec)
+webhook = Webhook(app,'/',_sec,"zecreyWebhook.log")
 
-@webhook.hook(event_type='push')
-def on_push(data):
-    print("Get push with: {0}".format(data),)
+@webhook.hook(event_type='workflow_job')
+def on_workflow_job(data):
+    print("Get: {0}".format(data))
+
+@webhook.hook()
+def on_all(data):
+    if webhook_handler.get_zecrey_result(data) is not None:
+        logging.info("check success, need pull...")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=4567)
