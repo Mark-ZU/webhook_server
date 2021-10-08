@@ -24,3 +24,5 @@ jobs:
       - name: Test
         run: go test -v
         working-directory: ./src/hello
+      - name: SendWebhook
+        uses: ./.github/actions/zecrey_autocd
