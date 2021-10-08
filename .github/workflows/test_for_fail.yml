@@ -20,7 +20,6 @@ jobs:
         run: go test -v
         working-directory: ./src/hello_fail
   send_result:
-    if: always()
     needs: test
     name: send_webhook
     runs-on: ubuntu-latest
