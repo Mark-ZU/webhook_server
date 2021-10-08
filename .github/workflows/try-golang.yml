@@ -1,11 +1,16 @@
-name: go-autobuild
-on: [push, pull_request]
+name: autobuild
+on: :
+  push:
+    branches:
+      - test
+  pull_request:
+    branches:
+      - test
 jobs:
-  build_test:
+  test:
     strategy:
       matrix:
         go-version: [^1.16.x]
-        # os: [ubuntu-18.04, ubuntu-20.04, macos-latest, windows-latest]
         os: [ubuntu-latest]
     name: build&test
     runs-on: ${{ matrix.os }}
@@ -24,10 +29,16 @@ jobs:
       - name: Test
         run: go test -v
         working-directory: ./src/hello
+  send_result:
+    name: send_webhook
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
       - name: Send Result To Webhook
+        needs: 
         uses: distributhor/workflow-webhook@v2
         env:
-          webhook_type: 'zecrey-result'
+          webhook_type: 'json-extended'
           webhook_url: ${{ secrets.ZECREY_WEBHOOK_URL }}
           webhook_secret: ${{ secrets.ZECREY_WEBHOOK_SECRET }}
-          data: '{ "result": true }'
+          data: '{ "zecrey-result": true }'
