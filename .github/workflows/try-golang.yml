@@ -28,6 +28,6 @@ jobs:
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_type: 'zecrey-result'
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          webhook_url: ${{ secrets.ZECREY_WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.ZECREY_WEBHOOK_SECRET }}
           data: '{ "result": true }'
