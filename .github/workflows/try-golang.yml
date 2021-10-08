@@ -1,5 +1,5 @@
 name: autobuild
-on: :
+on:
   push:
     branches:
       - test
