@@ -3,6 +3,6 @@
 
 * todo list
     * [x] add webhook
-    * [ ] add webhook to actions
+    * [X] add webhook to actions
     * [ ] golang CD
     * [ ] golang with docker
