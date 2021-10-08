@@ -24,5 +24,10 @@ jobs:
       - name: Test
         run: go test -v
         working-directory: ./src/hello
-      - name: SendWebhook
-        uses: ./.github/actions/zecrey_autocd
+      - name: Send Result To Webhook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_type: 'zecrey-result'
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          data: '{ "result": true }'
