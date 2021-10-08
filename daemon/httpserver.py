@@ -44,9 +44,11 @@ class Handler(BaseHTTPRequestHandler):
             self._set_failure()
             return None
 
+        # do check here
+
         self._set_response()
     def print_sign(self):
-        print("------------------parse----------------")
+        print("------------------print----------------")
         content_type = self.headers['Content-Type']
         event = self.headers['X-GitHub-Event']
         sign = self.headers['X-Hub-Signature']
