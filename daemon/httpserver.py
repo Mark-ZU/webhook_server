@@ -44,7 +44,7 @@ class Handler(BaseHTTPRequestHandler):
             self._set_failure()
             return None
 
-        # do check here
+        # do req here
 
         self._set_response()
     def print_sign(self):
