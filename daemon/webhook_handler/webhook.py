@@ -148,7 +148,7 @@ def _format_event(event_type, data):
     except KeyError:
         return event_type
 
-def get_zecrey_result(data):
+def check_zecrey_sign(data):
     try:
         return EVENT_DESCRIPTIONS["zecrey"].format(**data)
     except KeyError:

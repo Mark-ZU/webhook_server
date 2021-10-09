@@ -1,1 +1,1 @@
-from webhook_handler.webhook import Webhook, get_zecrey_result
+from webhook_handler.webhook import Webhook, check_zecrey_sign
