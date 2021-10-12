@@ -36,8 +36,8 @@ if __name__ == '__main__':
         f.write(sv_conf.format(home,home,home,user))
 
     env = os.environ.copy()
-    env["MY_PASSWORD"] = configs['passwd']
-    process = subprocess.Popen("echo $MY_PASSWORD | sudo -Sk sh deploy.sh".split(),env=env,stdout=subprocess.DEVNULL)
+    # env["MY_PASSWORD"] = configs['passwd']
+    process = subprocess.Popen("sudo -Sk sh deploy.sh".split(),env=env,stdout=subprocess.DEVNULL)
     process.wait()
 # write config file
 # copy config file to supervisor and restart

@@ -17,6 +17,6 @@
     * set ZECREY_WEBHOOK_URL to http://your_server_ip_or_url:port
     * set ZECREY_WEBHOOK_SECRET as the file `daemon/hash/.zecrey.sec` stored
   * `cp config_example.yaml config.yaml`
-  * change `passwd`in `config.yaml` to the PASSWORD of current sudoer user
   * `python3 deploy.py`
+  * enter your password then everything works
 
