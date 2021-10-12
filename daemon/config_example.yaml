@@ -1,2 +1,2 @@
 passwd: pAssWoRd
-supervisor_ini: supervisor/webhook_server.ini
+ini_name: webhook_server

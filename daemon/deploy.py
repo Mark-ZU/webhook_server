@@ -28,7 +28,8 @@ if __name__ == '__main__':
     user = os.getlogin()
     home = os.getcwd()
 
-    ini_file = configs["supervisor_ini"]
+    subprocess.Popen("mkdir -p supervisor".split(),stdout=subprocess.DEVNULL)
+    ini_file = "supervisor/"+configs["ini_name"]+".ini"
     open(ini_file, 'w').close()
     with open(ini_file,'w') as f:
         f.write(sv_conf.format(home,home,home,user))

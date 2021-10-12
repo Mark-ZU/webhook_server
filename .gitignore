@@ -4,3 +4,4 @@ __pycache__/
 
 ######################3
 daemon/config.yaml
+daemon/supervisor/*
