@@ -28,7 +28,8 @@ if __name__ == '__main__':
     user = os.getlogin()
     home = os.getcwd()
 
-    subprocess.Popen("mkdir -p supervisor".split(),stdout=subprocess.DEVNULL)
+    process = subprocess.Popen("mkdir -p supervisor".split(),stdout=subprocess.DEVNULL)
+    process.wait()
     ini_file = "supervisor/"+configs["ini_name"]+".ini"
     open(ini_file, 'w').close()
     with open(ini_file,'w') as f:
@@ -36,8 +37,8 @@ if __name__ == '__main__':
 
     env = os.environ.copy()
     env["MY_PASSWORD"] = configs['passwd']
-    subprocess.Popen("echo $MY_PASSWORD | sudo -Sk sh deploy.sh".split(),env=env,stdout=subprocess.DEVNULL)
-
+    process = subprocess.Popen("echo $MY_PASSWORD | sudo -Sk sh deploy.sh".split(),env=env,stdout=subprocess.DEVNULL)
+    process.wait()
 # write config file
 # copy config file to supervisor and restart
 # download or pull repository and call supervisor to restart zecrey
