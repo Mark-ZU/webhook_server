@@ -1,3 +1,6 @@
 __pycache__/
 *.sec
 *.log
+
+######################3
+daemon/config.yaml

@@ -23,7 +23,7 @@ def on_workflow_job(data):
 def on_all(data):
     res = webhook_handler.check_zecrey_sign(data)
     if res is not None:
-        print("check success, need pull... ",data["commits"]["id"],data["repository"]["clone_url"])
+        print("check success, need pull... ",data["head_commit"]["id"],data["repository"]["clone_url"])
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=4567)
